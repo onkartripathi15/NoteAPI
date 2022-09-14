@@ -13,7 +13,8 @@ namespace NoteAPI.Services
     {
         Note _oNote = new Note();
         List<Note> _oNotes = new List<Note>();
-        public string Delete(int Userid)
+       
+        public string DeleteNoteById(int Userid)
         {
             string message = "";
             try
@@ -43,24 +44,8 @@ namespace NoteAPI.Services
             return message;
         }
 
-        public Note Get(int Userid)
-        {
-            _oNote = new Note();
-            using (IDbConnection con = new SqlConnection(Global.ConnectionString))
-            {
-                if (con.State == ConnectionState.Closed) con.Open();
-                var oNotes = con.Query<Note>("SELECT * FROM Note WHERE userid=" + Userid).ToList();
 
-
-                if (oNotes != null && oNotes.Count() > 0)
-                {
-                    _oNote = oNotes.SingleOrDefault();
-                }
-            }
-            return _oNote;
-        }
-
-        public List<Note> Gets()
+        public List<Note> GetAllNotes()
         {
             _oNotes = new List<Note>();
             using (IDbConnection con = new SqlConnection(Global.ConnectionString))
@@ -75,9 +60,27 @@ namespace NoteAPI.Services
                 }
             }
             return _oNotes;
+        }
 
+        public Note GetNoteById(int Userid)
+        {
+
+            _oNote = new Note();
+            using (IDbConnection con = new SqlConnection(Global.ConnectionString))
+            {
+                if (con.State == ConnectionState.Closed) con.Open();
+                var oNotes = con.Query<Note>("SELECT * FROM Note WHERE userid=" + Userid).ToList();
+
+
+                if (oNotes != null && oNotes.Count() > 0)
+                {
+                    _oNote = oNotes.SingleOrDefault();
+                }
+            }
+            return _oNote;
 
         }
+
 
         public Note Save(Note oNote)
         {

@@ -7,10 +7,10 @@ namespace NoteAPI.IServices
     {
         Note Save(Note oNote);
 
-        List<Note> Gets();
+        List<Note> GetAllNotes();
 
-        Note Get(int userid);
+        Note GetNoteById(int userid);
 
-        string Delete(int userid);
+        string DeleteNoteById(int userid);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NoteAPI.Common;
 using NoteAPI.IServices;
 using System.Collections.Generic;
@@ -19,19 +21,20 @@ namespace NotesAPI.Controllers
         }
         // GET: api/<NotesController>
         [HttpGet]
-        public IEnumerable<Note> Get()
+        public IEnumerable<Note> GetAllNotes()
         {
-            return _oNoteService.Gets();
+            return _oNoteService.GetAllNotes();
         }
 
         // GET api/<NotesController>/5
         [HttpGet("{userid}")]
-        public Note Get(int userid)
+        public Note GetNoteById(int userid)
         {
-            return _oNoteService.Get(userid);
+            return _oNoteService.GetNoteById(userid);
         }
 
         // POST api/<NotesController>
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
         [HttpPost]
         public Note Post([FromBody] Note oNote)
         {
@@ -47,9 +50,9 @@ namespace NotesAPI.Controllers
 
         // DELETE api/<NotesController>/5
         [HttpDelete("{userid}")]
-        public string Delete(int userid)
+        public string DeleteNoteById(int userid)
         {
-            return _oNoteService.Delete(userid);
+            return _oNoteService.DeleteNoteById(userid);
         }
     }
 }
