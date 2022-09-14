@@ -6,6 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NoteAPI.Common;
+using NoteAPI.IServices;
+using NoteAPI.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +29,10 @@ namespace NoteAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddSingleton<IConfiguration>(Configuration);
+            Global.ConnectionString = Configuration.GetConnectionString("NoteDB");
+            services.AddScoped<INoteService, NoteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

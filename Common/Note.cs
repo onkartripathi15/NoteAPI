@@ -6,7 +6,7 @@ namespace NoteAPI.Common
     {
         public int Userid { get; set; }
         public string NoteDetails { get; set; }
-        public int NoteType { get; set; }
-        public DateTime CreatedOn { get; set; }
+        public string NoteType { get; set; }
+        public string CreatedOn { get; set; }
     }
 }
