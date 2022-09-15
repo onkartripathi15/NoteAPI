@@ -1,9 +1,9 @@
 ﻿using NoteAPI.Common;
 using System.Collections.Generic;
 
-namespace NoteAPI.IServices
+namespace NoteAPI.Repository
 {
-    public interface INoteService
+    public interface INoteRepo
     {
         Note Save(Note oNote);
 

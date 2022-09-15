@@ -13,9 +13,9 @@ namespace NotesAPI.Controllers
     [ApiController]
     public class NotesController : ControllerBase
     {
-        private INoteService _oNoteService;
+        private INoteRepo _oNoteService;
 
-        public NotesController(INoteService oNoteService)
+        public NotesController(INoteRepo oNoteService)
         {
             _oNoteService = oNoteService;
         }

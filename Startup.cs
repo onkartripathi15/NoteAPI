@@ -34,9 +34,7 @@ namespace NoteAPI
         {
             services.AddControllers();
 
-            services.AddSingleton<IConfiguration>(Configuration);
-            Global.ConnectionString = Configuration.GetConnectionString("NoteDB");
-            services.AddScoped<INoteService, NoteService>();
+            services.AddScoped<INoteRepo, NoteRepo>();
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
