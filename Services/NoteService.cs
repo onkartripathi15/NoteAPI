@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using NoteAPI.Common;
-using NoteAPI.IServices;
+using NoteAPI.Repositories;
+using NoteAPI.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,11 +15,11 @@ namespace NoteAPI.Services
         private NoteRepo _noteRepo;
         public NoteService(NoteRepo noteRepo)
         {
-            _noteRepo=noteRepo;
+            _noteRepo = noteRepo;
         }
         public string DeleteNoteById(int Userid)
         {
-            return  _noteRepo.DeleteNoteById(Userid);
+            return _noteRepo.DeleteNoteById(Userid);
         }
         public List<Note> GetAllNotes()
         {
@@ -34,7 +35,7 @@ namespace NoteAPI.Services
         }
         private DynamicParameters SetParameters(Note oNote, int operationType)
         {
-           return _noteRepo.SetParameters(oNote, operationType);
+            return _noteRepo.SetParameters(oNote, operationType);
         }
     }
 }

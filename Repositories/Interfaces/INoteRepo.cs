@@ -1,7 +1,7 @@
 ﻿using NoteAPI.Common;
 using System.Collections.Generic;
 
-namespace NoteAPI.Repository
+namespace NoteAPI.Repositories.Interfaces
 {
     public interface INoteRepo
     {

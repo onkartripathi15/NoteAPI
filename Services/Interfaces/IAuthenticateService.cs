@@ -1,6 +1,6 @@
 ﻿using NoteAPI.Models;
 
-namespace NoteAPI.IServices
+namespace NoteAPI.Services.Interfaces
 {
     public interface IAuthenticateService
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using NoteAPI.IServices;
 using NoteAPI.Models;
+using NoteAPI.Services.Interfaces;
 
 namespace NoteAPI.Controllers
 {

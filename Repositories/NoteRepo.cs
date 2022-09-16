@@ -1,5 +1,4 @@
 ﻿using NoteAPI.Common;
-using NoteAPI.IServices;
 using System.Collections.Generic;
 using Dapper;
 using System;
@@ -8,8 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using static NoteAPI.Common.Enum;
 using Microsoft.Extensions.Configuration;
+using NoteAPI.Repositories.Interfaces;
 
-namespace NoteAPI.Repository
+namespace NoteAPI.Repositories
 {
     public class NoteRepo : INoteRepo
     {
